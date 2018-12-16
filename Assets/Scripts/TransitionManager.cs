@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Takes care of the transitions between scenes.
+ * Is not destroyed on load, also holds the eventmanager in the gameobject
+ * Transitions fade screen
+ * Also audio fade in and out
+ */
 public class TransitionManager : MonoBehaviour {
 
     public static TransitionManager transMan;
@@ -12,7 +17,8 @@ public class TransitionManager : MonoBehaviour {
         {
             DontDestroyOnLoad(gameObject);
             transMan = this;
-            
+            EventManager.StartListening(0, TransitionIn);
+            EventManager.StartListening(1, TransitionOut);
         }
         else if(transMan != this)
         {
@@ -20,15 +26,13 @@ public class TransitionManager : MonoBehaviour {
         }
     }
 
+    public void TransitionIn ()
+    {
 
+    }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void TransitionOut ()
+    {
+
+    }
 }
