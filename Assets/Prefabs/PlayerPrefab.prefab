@@ -60,6 +60,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1084066129930346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4988511354690638}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1326037969571324
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1528294985760298
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,8 +122,9 @@ GameObject:
   - component: {fileID: 50412344638434550}
   - component: {fileID: 58304603926848560}
   - component: {fileID: 61566784100801966}
+  - component: {fileID: 114819748871454954}
   m_Layer: 0
-  m_Name: peckBod
+  m_Name: PlayerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,13 +207,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532787169836388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6037476, y: 0.95858675, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4342113407500142}
   - {fileID: 4620353454336136}
   - {fileID: 4978144777827372}
+  - {fileID: 4988511354690638}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -226,6 +243,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4722428577409396}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4988511354690638
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084066129930346}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.68, z: 0}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  m_Children: []
+  m_Father: {fileID: 4722428577409396}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50329872570838566
 Rigidbody2D:
@@ -258,7 +288,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -343,6 +373,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114819748871454954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532787169836388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26cbd8aa7d6c6d4aab278f2313228ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyLeft: 276
+  keyRight: 275
+  keyJump: 273
+  keyPeck: 0
+  groundCheck: {fileID: 4988511354690638}
+  jumpForce: 100
+  maxSpeed: 10
+  facingRight: 1
+  jump: 1
+  canMove: 1
+  playerType: {fileID: 11400000, guid: 32e7c1892da1ae44aa20479d66c62fe9, type: 2}
+  source: {fileID: 0}
+  soundLand: {fileID: 0}
+  soundJump: {fileID: 0}
+  soundPeck: {fileID: 0}
+  soundWalk: {fileID: 0}
+  legAnim: {fileID: 95953462760566182}
+  headAnim: {fileID: 95940921435030020}
 --- !u!212 &212034907231219498
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -679,7 +738,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.12, y: -0.12}
-  m_ConnectedAnchor: {x: -0.08541751, y: 0.08047106}
+  m_ConnectedAnchor: {x: -0.08541748, y: 0.08047109}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
